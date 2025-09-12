@@ -1,0 +1,57 @@
+.timeline {
+  height: calc(100% - 150px);
+  width: 100%;
+  display: flex;
+  padding-top: 150px;
+  border-left: 1px solid rgba(66, 86, 122, 0.1);
+  border-right: 1px solid rgba(66, 86, 122, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.backgroundLines {
+  position: absolute;
+  inset: 0;
+
+  .verticalLine {
+    position: absolute;
+    height: 100%;
+    width: 1px;
+    background-color: #42567A;
+    opacity: 0.1;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .horizontalLine {
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    background-color: #42567A;
+    opacity: 0.1;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.title {
+  height: 134px;
+  width: 353px;
+  color: #42567A;
+  font-family: "PT Sans";
+  font-size: 56px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 78px;
+
+  .line {
+    min-width: 5px;
+    height: 120px;
+    background: linear-gradient(to bottom, #3877EE, #EF5DA8);
+  }
+}
+ 

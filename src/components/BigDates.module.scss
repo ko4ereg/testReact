@@ -1,0 +1,30 @@
+.dates {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    position: absolute;
+    left: 10%;
+    top: 43%;
+    z-index: 0;
+
+    .startDate {
+        color: #5D5FEF;
+        text-align: center;
+
+        font-size: 200px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 160px;
+        /* 80% */
+        letter-spacing: -4px;
+    }
+
+    .endDate {
+        color: #EF5DA8;
+        font-size: 200px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 160px;
+        letter-spacing: -4px;
+    }
+}

@@ -1,0 +1,46 @@
+.circleWrapper {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 530px;
+    width: 530px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+}
+
+.dot {
+    position: absolute;
+    background: #42567A;
+    border-radius: 50%;
+    width: 6px;
+    height: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.dot.active {
+    border: 1px solid rgba(48, 62, 88, 0.5);
+    background-color: rgba(244, 245, 249, 1);
+    color: white;
+    width: 56px;
+    height: 56px;
+
+    flex-shrink: 0;
+    color: #42567A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+    /* 150% */
+}
