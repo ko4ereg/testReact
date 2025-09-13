@@ -1,9 +1,12 @@
 import { FC, useState } from "react";
 import s from "./Timeline.module.scss";
+import "swiper/css";
+import "swiper/css/navigation";
 
 import Circle from "./Circle.tsx";
 import BigDates from "./BigDates.tsx";
 import PaginationButtons from "./PaginationButtons.tsx";
+import Slider from "./Slider.tsx";
 
 const Timeline: FC = () => {
   const [active, setActive] = useState(0);
@@ -25,6 +28,7 @@ const Timeline: FC = () => {
       <BigDates active={active} />
 
       <PaginationButtons active={active} points={points} onChange={setActive} />
+      <Slider active={active}></Slider>
     </div>
   );
 };

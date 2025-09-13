@@ -43,4 +43,31 @@
     font-weight: 400;
     line-height: 30px;
     /* 150% */
+
+
+
+}
+
+.category {
+
+    color: #42567A;
+    position: absolute;
+    left: 100%;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 30px;
+    animation: opacity-change 1s ease-out forwards;
+
+
+}
+
+@keyframes opacity-change {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }

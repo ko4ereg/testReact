@@ -1,6 +1,8 @@
 import { FC, useEffect, useState } from "react";
 import s from "./Circle.module.scss";
+
 import getNextTarget from "../utils/getNextTarget.ts";
+import { slides } from "../store/data.ts";
 
 interface CircleProps {
   points: number;
@@ -15,6 +17,17 @@ const Circle: FC<CircleProps> = ({
 }) => {
   const [activeStep, setActiveStep] = useState(externalActive);
   const [hover, setHover] = useState<null | number>(null);
+  const [showCategory, setShowCategory] = useState(false);
+
+  useEffect(() => {
+    setShowCategory(false); // скрыть категорию во время анимации
+  }, [externalActive]);
+
+  const handleSetShow = () => {
+    if (activeStep === externalActive) {
+      setShowCategory(true);
+    }
+  };
 
   useEffect(() => {
     if (externalActive === activeStep) return;
@@ -23,6 +36,7 @@ const Circle: FC<CircleProps> = ({
       setActiveStep((curr) => {
         if (curr === externalActive) {
           clearInterval(interval);
+
           return curr;
         }
         const next = getNextTarget(curr, externalActive, points);
@@ -47,6 +61,7 @@ const Circle: FC<CircleProps> = ({
           transform: `rotate(${rotation}deg)`,
           transition: "transform 0.5s ease-in-out",
         }}
+        onTransitionEnd={handleSetShow}
       >
         {Array.from({ length: points }).map((_, i) => {
           const angle = angleStep * i;
@@ -66,17 +81,29 @@ const Circle: FC<CircleProps> = ({
               onMouseLeave={() => setHover(null)}
               onClick={() => onChange(i)}
             >
-              {/* {isActive ? i + 1 : null} */}
               {isActive && (
-                <span
+                <div
                   style={{
-                    display: "inline-block",
+                    display: "flex",
+
                     transform: `rotate(${-rotation}deg)`,
                     transition: "transform 0.5s ease-in-out",
                   }}
                 >
                   {i + 1}
-                </span>
+                  {i === externalActive && showCategory && (
+                    <div
+                      className={s.category}
+                      style={{
+                        marginLeft: "50px",
+                        whiteSpace: "nowrap",
+                        opacity: 0,
+                      }}
+                    >
+                      {slides[i].category}
+                    </div>
+                  )}
+                </div>
               )}
             </div>
           );

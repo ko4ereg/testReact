@@ -1,0 +1,43 @@
+.slider {
+    max-width: 100%;
+    position: relative;
+    bottom: 104px;
+    padding-left: 80px;
+    padding-right: 160px;
+
+    .slideWrapper {
+        transition: opacity 0.2s ease-in-out;
+        opacity: 1;
+    }
+
+    .fadeOut {
+        opacity: 0;
+    }
+
+    .fadeIn {
+        opacity: 1;
+    }
+
+    .button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #FFF;
+        filter: drop-shadow(0 0 15px rgba(56, 119, 238, 0.10));
+        cursor: pointer;
+        top: 50%;
+    }
+
+    .back {
+        left: 20px;
+    }
+
+    .forward {
+        right: 40px;
+    }
+}

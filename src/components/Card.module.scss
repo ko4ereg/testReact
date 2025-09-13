@@ -1,0 +1,27 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 320px;
+
+    .title {
+        color: #3877EE;
+        font-family: "Bebas Neue";
+        font-size: 25px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 120%;
+        /* 30px */
+        text-transform: uppercase;
+    }
+
+    .event {
+        color: #42567A;
+
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 30px;
+        /* 150% */
+    }
+}
