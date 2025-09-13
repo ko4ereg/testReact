@@ -30,26 +30,18 @@
     color: white;
     width: 56px;
     height: 56px;
-
     flex-shrink: 0;
     color: #42567A;
     display: flex;
     justify-content: center;
     align-items: center;
-
-
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
     line-height: 30px;
-    /* 150% */
-
-
-
 }
 
 .category {
-
     color: #42567A;
     position: absolute;
     left: 100%;
@@ -58,8 +50,6 @@
     font-weight: 700;
     line-height: 30px;
     animation: opacity-change 1s ease-out forwards;
-
-
 }
 
 @keyframes opacity-change {
@@ -69,5 +59,11 @@
 
     100% {
         opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .circleWrapper {
+        display: none;
     }
 }

@@ -1,12 +1,13 @@
 import { FC, useRef, useState } from "react";
 import s from "./Slider.module.scss";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import { SlideGroup } from "../store/data";
-import { Navigation } from "swiper/modules";
+import { FreeMode, Navigation } from "swiper/modules";
 import Card from "./Card.tsx";
+import { useDevice } from "../context/DeviceContext.tsx";
 
 const Slide: FC<{ slide: SlideGroup }> = ({ slide }) => {
+  const { isMobile } = useDevice();
   const swiperRef = useRef<any>(null);
   const [active, setActive] = useState(0);
 
@@ -14,8 +15,8 @@ const Slide: FC<{ slide: SlideGroup }> = ({ slide }) => {
   const totalSlides = slide.slides.length;
 
   return (
-    <div style={{ cursor: "grab" }}>
-      {active !== 0 && (
+    <div style={{ cursor: "grab", height: "100%" }}>
+      {!isMobile && active !== 0 && (
         <button
           className={`${s.button} ${s.back}`}
           onClick={() => swiperRef.current?.slidePrev()}
@@ -33,7 +34,7 @@ const Slide: FC<{ slide: SlideGroup }> = ({ slide }) => {
         </button>
       )}
 
-      {active < totalSlides - slidesPerView && (
+      {!isMobile && active < totalSlides - slidesPerView && (
         <button
           className={`${s.button} ${s.forward}`}
           onClick={() => swiperRef.current?.slideNext()}
@@ -52,13 +53,32 @@ const Slide: FC<{ slide: SlideGroup }> = ({ slide }) => {
       <Swiper
         onSwiper={(swiper) => (swiperRef.current = swiper)}
         navigation={false}
-        modules={[Navigation]}
+        modules={[Navigation, FreeMode]}
         className="mySwiper"
         style={{ position: "relative" }}
         initialSlide={0}
-        spaceBetween={80}
-        slidesPerView={slidesPerView}
+        spaceBetween={isMobile ? 25 : 80}
+        slidesPerView={isMobile ? 2 : slidesPerView}
         onSlideChange={(swiper) => setActive(swiper.activeIndex)}
+        watchSlidesProgress={isMobile}
+        freeMode={true}
+        onProgress={(swiper) => {
+          const swiperConst = swiper as any;
+          if (!isMobile) return;
+
+          const lastVisibleIndex =
+            swiper.slides.length - swiperConst.params.slidesPerView;
+          swiper.slides.forEach((slideEl, index) => {
+            const slide = slideEl as any;
+            let opacity = 1;
+            if (swiper.activeIndex < lastVisibleIndex) {
+              const progress = slide.progress;
+
+              opacity = Math.max(0.5, 1 - Math.abs(progress) * 0.5);
+            }
+            slideEl.style.opacity = `${opacity}`;
+          });
+        }}
       >
         {slide.slides.map((slide, index) => (
           <SwiperSlide key={index}>

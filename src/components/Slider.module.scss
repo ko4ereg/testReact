@@ -6,16 +6,17 @@
     padding-right: 160px;
 
     .slideWrapper {
-        transition: opacity 0.2s ease-in-out;
         opacity: 1;
     }
 
     .fadeOut {
         opacity: 0;
+        transition: opacity 0s ease-out;
     }
 
     .fadeIn {
         opacity: 1;
+        transition: opacity 1s ease-out;
     }
 
     .button {
@@ -40,4 +41,35 @@
     .forward {
         right: 40px;
     }
+}
+
+@media (max-width: 768px) {
+    .slider {
+        bottom: 0;
+        padding: 0;
+        flex-grow: 1;
+        .category {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        .line {
+            width: 95%;
+            height: 1px;
+            background-color: #C7CDD9;
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        .fadeOut {
+            transform: translateY(100%)
+        }
+
+        .fadeIn {
+            opacity: 1;
+            transition: all 0.5s ease-out;
+            transform: translateY(0%)
+        }
+    }
+
 }

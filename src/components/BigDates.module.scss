@@ -6,25 +6,35 @@
     left: 10%;
     top: 43%;
     z-index: 0;
+    font-size: 200px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 160px;
+    /* 80% */
+    letter-spacing: -4px;
+    text-align: center;
 
     .startDate {
         color: #5D5FEF;
-        text-align: center;
-
-        font-size: 200px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 160px;
-        /* 80% */
-        letter-spacing: -4px;
     }
 
     .endDate {
         color: #EF5DA8;
-        font-size: 200px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 160px;
-        letter-spacing: -4px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .dates {
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        position: relative;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        font-size: 56px;
+        padding-left: 20px;
+
     }
 }

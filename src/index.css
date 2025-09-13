@@ -17,3 +17,20 @@ code {
 .swiper-slide {
   max-width: 320px;
 }
+
+@media (max-width: 768px) {
+  .mySwiper {
+    height: 100%;
+    padding-left: 20px !important;
+  }
+
+  .swiper-slide {
+    max-width: 166px;
+    overflow: hidden;
+    display: flex;
+    white-space: normal;
+    overflow-wrap: break-word;
+    transition: opacity 0.3s ease;
+  }
+
+}
