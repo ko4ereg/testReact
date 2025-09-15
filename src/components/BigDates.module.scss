@@ -28,13 +28,15 @@
     .dates {
         display: flex;
         justify-content: space-between;
-        width: 90%;
+        width: calc(100% - 47px);
         position: relative;
         top: 0;
         left: 0;
         z-index: 0;
         font-size: 56px;
+        letter-spacing: -1.12px;
         padding-left: 20px;
-
+        padding-right: 27px;
+        line-height: normal;
     }
 }
